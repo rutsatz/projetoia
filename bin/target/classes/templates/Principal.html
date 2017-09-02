@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+
+<head></head>
+
+<section layout:fragment="conteudo">
+
+	<form class="form-horizontal" method="POST" id="formulario" 
+		th:action="@{/}" th:object="${backPropagation}">
+	
+		<div layout:include="MensagemErro"></div>
+	
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h5 class="panel-title aw-titulo-panel">Parâmetros</h5>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel-body">
+			<div class="form-group"
+			th:classappend="${#fields.hasErrors('parametro.qtdCamadasIntermediarias')} ? has-error">
+				<label for="descricao" class="col-sm-2 control-label">Camadas intermediárias</label>
+				<div class="col-sm-2">					
+					<input type="text" class="form-control" id="qtdCamadasIntermediarias" 
+						th:field="*{parametro.qtdCamadasIntermediarias}"/>
+				</div>					
+			</div>	
+			
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('parametro.neuroniosPorCamada')} ? has-error">
+				<label for="neuroniosPorCamada" class="col-sm-2 control-label">Neurônios Por Camada</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="neuroniosPorCamada" 
+						th:field="*{parametro.neuroniosPorCamada}"/>
+						
+				</div>	
+			</div>	
+			
+			<div class="form-group js-decimal"
+				th:classappend="${#fields.hasErrors('parametro.taxaAprendizagem')} ? has-error">
+				<label for="taxaAprendizagem" class="col-sm-2 control-label">Taxa de Aprendizagem</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="taxaAprendizagem"
+						th:field="*{parametro.taxaAprendizagem}"/>
+				</div>			
+			</div>
+			
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('parametro.erroAceitavel')} ? has-error">
+				<label for="erroAceitavel" class="col-sm-2 control-label">Erro Aceitável</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="erroAceitavel"
+						th:field="*{parametro.erroAceitavel}"/>
+				</div>				
+			</div>
+			
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('parametro.qtdIteracoes')} ? has-error">
+				<label for="qtdIteracoes" class="col-sm-2 control-label">Quantidade de Iterações</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="qtdIteracoes"
+						th:field="*{parametro.qtdIteracoes}"/>
+				</div>
+			</div>			
+		</div>
+				
+			
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h5 class="panel-title aw-titulo-panel">Treine sua RNA</h5>					
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="arquivoTreinamento" class="col-sm-2 control-label"
+					>Envie um arquivo de treinamento</label>
+					<div class="col-sm-4 ">
+						<input type="file" class="form-control" id="arquivoTreinamento"
+						th:field="*{arquivoTreinamento}"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn js-treinar"
+						th:href="@{/treinar}" style="display: inline">Treinar RNA</button>
+						<div class="col-sm-4" style="display: none" id="msgTreinar"></div>
+					</div>
+										
+				</div>
+			</div>
+		</div>	
+				
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h5 class="panel-title aw-titulo-panel">Perguntas</h5>
+				</div>
+			</div>
+		</div>	
+		
+		<div class="panel-body">
+		
+			<div class="form-group">
+				<label for="primeiraLinguagem" class="col-sm-2 control-label"
+					>Qual foi a sua primeira linguagem?</label>
+				<div class="col-sm-2">
+					<select class="form-control" id="primeiraLinguagem" name="primeiraLinguagem">
+						<option th:each="linguagem : ${todasLinguagens}"
+							th:value="${linguagem}" th:text="${linguagem.descricao}"
+							th:field="*{primeiraLinguagem}"></option>
+					</select>
+				</div>
+			</div>
+			
+					
+			<div class="form-group">
+				<label for="novaLinguagem" class="col-sm-2 control-label" 
+					>Qual linguagem você deseja aprender?</label>
+				<div class="col-sm-2">
+					<select class="form-control" id="novaLinguagem" name="novaLinguagem">
+						<option th:each="linguagem : ${todasLinguagens}"
+							th:value="${linguagem}" th:text="${linguagem.descricao}"
+							th:field="*{novaLinguagem}"></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="dificuldadeAprendizado" class="col-sm-2 control-label"
+				>Você aprende com?</label>
+				<div class="col-sm-2">
+				<select class="form-control" id="dificuldadeAprendizado" name="dificuldadeAprendizado">
+				<option th:each="aprendizado : ${todasDificuldadesAprendizado}"
+					th:value="${aprendizado}" th:text="${aprendizado.descricao}"
+					th:field="*{dificuldadeAprendizado}"></option>
+				</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn js-reconhecer">Reconhecer</button>
+				</div>	
+			</div>
+		</div>	
+		<div id="resposta" style="display: none">
+		<div class="panel panel-default" >
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h5 class="panel-title aw-titulo-panel">Resultado</h5>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="resposta" class="col-sm-2 control-label">Você vai ter: </label>
+				<div class="col-sm-4">
+					<label class="form-control" 
+					th:field="*{resposta}"></label>
+				</div>
+			</div>
+		</div>
+		</div>		
+	</form>
+</section>	
+</html>
