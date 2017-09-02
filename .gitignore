@@ -10,7 +10,6 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
-<<<<<<< HEAD
 
 ### STS ###
 .apt_generated
@@ -19,5 +18,3 @@ buildNumber.properties
 .project
 .settings
 .springBeans
-=======
->>>>>>> branch 'master' of https://github.com/rutsatz/projetoia.git
