@@ -63,7 +63,7 @@
 			<artifactId>adrena</artifactId>
 			<version>1.1</version>
 			<scope>system</scope>
-			<systemPath>${basedir}\lib\ADReNA_API.jar</systemPath>
+			<systemPath>${project.basedir}\lib\ADReNA_API.jar</systemPath>
 		</dependency>
 		
 		<dependency>
@@ -71,7 +71,7 @@
 			<artifactId>gson</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>${basedir}\lib\gson-2.2.4.jar</systemPath>
+			<systemPath>${project.basedir}\lib\gson-2.2.4.jar</systemPath>
 		</dependency>
 		
 	</dependencies>
