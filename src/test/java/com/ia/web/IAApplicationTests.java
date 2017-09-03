@@ -1,4 +1,4 @@
-package com.example.web;
+package com.ia.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class WebBasicApplicationTests {
+public class IAApplicationTests {
 
 	@Test
 	public void contextLoads() {

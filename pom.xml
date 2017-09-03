@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example</groupId>
-	<artifactId>web-basic</artifactId>
+	<groupId>com.ia</groupId>
+	<artifactId>projetoia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>web-basic</name>
-	<description>Demo project for Spring Boot</description>
+	<name>projetoia</name>
+	<description>Projeto de inteligencia artificial</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -61,6 +61,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
