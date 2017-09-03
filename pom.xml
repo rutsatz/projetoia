@@ -6,7 +6,6 @@
 	<groupId>com.ia</groupId>
 	<artifactId>projetoia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 
 	<name>projetoia</name>
 	<description>Projeto de inteligencia artificial</description>

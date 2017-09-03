@@ -1,1 +1,1 @@
-web: java -jar target/projetoia.war
+web: java -Dserver.port=8080 -jar target/projetoia.jar
