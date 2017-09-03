@@ -1,0 +1,3 @@
+[submodule "lib\\adrena"]
+	path = lib\\adrena
+	url = https://github.com/mattkist/ADReNA.git
