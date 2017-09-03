@@ -57,6 +57,23 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>adrena</groupId>
+			<artifactId>adrena</artifactId>
+			<version>1.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}\lib\ADReNA_API.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+			<groupId>gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}\lib\gson-2.2.4.jar</systemPath>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
