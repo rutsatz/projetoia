@@ -17,51 +17,63 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ia.web.model.Aprendizado;
 import com.ia.web.model.BackPropagation;
 import com.ia.web.model.Linguagem;
+import com.ia.web.service.BackPropagationService;
 
 @Controller
 public class PrincipalController {
 
-	
-	@RequestMapping("/")
-	public ModelAndView inicio(@Autowired @Validated BackPropagation backPropagation, Errors erros, RedirectAttributes attributes) {
-		
-		ModelAndView mv = new ModelAndView("Principal");
-//		mv.addObject(new BackPropagation());
-		mv.addObject("backpropagation", backPropagation);
-		
-		return mv;
-	}
+	@Autowired
+	private BackPropagationService backPropagationService;
 
-	@RequestMapping(value = "/reconhecer", method = RequestMethod.POST)
-	public @ResponseBody String reconhecer(@Validated BackPropagation backPropagation, Errors erros, RedirectAttributes attributes) {
-		System.out.println("tem erros: " + erros.hasErrors());
-		if(erros.hasErrors()) {
-			return "redirect:/";
-		}
-		
-		
-		
-		System.out.println(backPropagation.getDificuldadeAprendizado());
-		
-		return "Principal";
+	@RequestMapping("/")
+	public ModelAndView inicio(@Autowired @Validated BackPropagation backPropagation, Errors erros,
+			RedirectAttributes attributes) {
+
+		ModelAndView mv = new ModelAndView("Principal");
+		// mv.addObject(new BackPropagation());
+		mv.addObject("backpropagation", backPropagation);
+
+		return mv;
 	}
 
 	@RequestMapping(value = "/treinar", method = RequestMethod.POST)
 	public @ResponseBody String treinar() {
-		
-		System.out.println("Treinar");
-		
-		return "RNA treinada com sucesso!"; 
+
+		try {
+			backPropagationService.treinar();
+		} catch (Exception e) {			
+			e.getMessage();
+		}
+
+		return "RNA foi treinada com sucesso!";
 	}
-	
+
+	@RequestMapping(value = "/reconhecer", method = RequestMethod.POST)
+	public @ResponseBody String reconhecer(@Validated BackPropagation backPropagation, Errors erros,
+			RedirectAttributes attributes) {
+
+		if (erros.hasErrors()) {
+			return "redirect:/";
+		}
+
+		try {
+			backPropagationService.reconhecer();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "Principal";
+	}
+
 	@ModelAttribute("todasLinguagens")
-	public List<Linguagem> todasLinguagens(){
+	public List<Linguagem> todasLinguagens() {
 		return Arrays.asList(Linguagem.values());
 	}
-	
+
 	@ModelAttribute("todasDificuldadesAprendizado")
-	public List<Aprendizado> todasDificuldadesAprendizado(){
+	public List<Aprendizado> todasDificuldadesAprendizado() {
 		return Arrays.asList(Aprendizado.values());
 	}
-	
+
 }

@@ -22,7 +22,7 @@ import org.springframework.validation.annotation.Validated;
 public class Parametro {
 	
 	@NotNull( message = "Informe a quantidade de camadas intermediárias!")
-	private Integer qtdCamadasIntermediarias;
+	private int qtdCamadasIntermediarias;
 	
 	@NotNull(message = "Obrigatório informar a quantidade de neurônios por camada!")
 	@Size(min = 1, message = "É obrigatório informar pelo menos um neurônio por camda!")
@@ -48,7 +48,7 @@ public class Parametro {
 
 	private Boolean usarArquivo;
 	
-	public Parametro(Integer qtdCamadasIntermediarias, String neuroniosPorCamada, Double taxaAprendizagem,
+	public Parametro(int qtdCamadasIntermediarias, String neuroniosPorCamada, Double taxaAprendizagem,
 			Double erroAceitavel, BigInteger qtdIteracoes, Boolean usarArquivo) {
 		
 		this.qtdCamadasIntermediarias = qtdCamadasIntermediarias;
@@ -59,11 +59,11 @@ public class Parametro {
 		this.usarArquivo = usarArquivo;
 	}
 
-	public Integer getQtdCamadasIntermediarias() {
+	public int getQtdCamadasIntermediarias() {
 		return qtdCamadasIntermediarias;
 	}
 
-	public void setQtdCamadasIntermediarias(Integer qtdCamadasIntermediarias) {
+	public void setQtdCamadasIntermediarias(int qtdCamadasIntermediarias) {
 		this.qtdCamadasIntermediarias = qtdCamadasIntermediarias;
 	}
 

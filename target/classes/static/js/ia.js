@@ -48,37 +48,4 @@ $(function(){
 		
 	});
 	
-	$('.js-reconhecer').on('click', function(event){
-		
-		event.preventDefault();
-		
-		var str = $('#formulario').serialize();
-		
-		var response = $.ajax({
-			url: '/reconhecer',
-			type: 'POST',
-			data: str			
-		});
-		
-		response.done(function(e){
-//			$('#msgTreinar').html('<span class="label label-success">'+e+'</span>')
-//				.show('slow')
-//				.css('display', 'inline');
-			
-//			window.location.href = "/";
-			window.location.reload();
-			
-			$('#resposta').show('slow')
-			.css('display', 'inline');
-
-			
-		});
-		
-		response.fail(function(e){
-			console.log(e);
-			alert('Ocorreu um erro ao Reconhecer.');
-		});		
-		
-	});
-	
 });
