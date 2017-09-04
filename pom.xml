@@ -14,7 +14,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.6.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -57,23 +57,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>adrena</groupId>
 			<artifactId>adrena</artifactId>
 			<version>1.1</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}\lib\ADReNA_API.jar</systemPath>
 		</dependency>
-		
-		<dependency>
-			<groupId>gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}\lib\gson-2.2.4.jar</systemPath>
-		</dependency>
-		
+
 	</dependencies>
 
 	<build>
@@ -86,5 +76,12 @@
 		</plugins>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>project.local</id>
+			<name>project</name>
+			<url>file:${project.basedir}/repo</url>
+		</repository>
+	</repositories>
 
 </project>
