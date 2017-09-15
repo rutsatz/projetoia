@@ -1,51 +1,124 @@
-$('#confirmacaoExclusaoModal').on('show.bs.modal', function(event){
-	
-	var button = $(event.relatedTarget);
-	
-	var codigoTitulo = button.data('codigo');
-	var descricaoTitulo = button.data('descricao');
-	
-	var modal = $(this);
-	var form = modal.find('form');
-	var action = form.data('url-base');
-	if(!action.endsWith('/')){
-		action += '/';
-	}
-	form.attr('action', action + codigoTitulo);
-	
-	modal.find('.modal-body span').html('Tem certeza que deseja excluir o titulo <strong>'
-			+ descricaoTitulo + '</strong>?')
-});
-
 // Função ready do javascript
-$(function(){	
-//	$('.js-decimal').maskMoney({
-//		decimal: ',',
-//		thousands: '.',
-//		allowZero: true				
-//	});
+$(function() {
+
+	// Ajusta componentes se já estiver treinada.
+	trataRnaTreinada();
 	
-	
-	$('.js-treinar').on('click', function(event){
+	var botaoTreinar = $('.js-treinar');
+		
+	// Realiza o treinamento da RNA via ajax.
+	botaoTreinar.on('click', function(event) {
 		event.preventDefault();
 		
-		var response = $.ajax({
-			url: '/treinar',
-			type: 'POST'
-		});
+		labelMsgTreinar = $('#msgTreinar');
 		
-		response.done(function(e){
-			$('#msgTreinar').html('<span class="label label-success">'+e+'</span>')
-				.show('slow')
-				.css('display', 'inline');
+		labelMsgTreinar.hide();
+		
+		botaoTreinar.toggleClass('disabled').text('Aguarde...');
+		
+//		var file = $('#arquivoTreinamento');
+//		console.log(file);
+		var data = $('#formulario').serialize();
+//		var form = new FormData($('#formulario')[0]);
+
+//		var data = new FormData(form);
+		
+//		data.append('arquivoTreinamento',file);
+		
+//		console.log(data);
+		
+		var response = $.ajax({
+			enctype: 'multipart/form-data',
+			url : '/treinar',
+			type : 'POST',
+			data: data,
+//			data : formData,
+			cache: false,
+			contentType: false,
+			processData: false,
+			timeout: 600000
 			
 		});
-		
-		response.fail(function(e){
-			console.log(e);
-			alert('Ocorreu um erro ao treinar a RNA.');
+
+		// Exibe o retorno da função para o usuário.
+		response.done(exibirLabelTreinamento);
+
+		response.fail(function(e) {
+			var botaoReconhecer = $('.js-reconhecer');
+			
+			// Em caso de erro, clica no botão para 
+			// validar os parâmetros informados.
+			// botaoReconhecer.trigger('click'); @@ d
 		});
-		
+
 	});
+
+	// Faz os tratamentos do botão Reconhecer.
+	function habilitaBotaoReconhecer() {
+		var botaoReconhecer = $('.js-reconhecer');
+
+		botaoReconhecer.toggleClass('disabled')
+			.text('Reconhecer');
+	};
+
+	// Quando carrega a página, faz os tratamentos
+	// dos botões.
+	function trataRnaTreinada() {
+
+		var isRnaTreinada = $('#rnaTreinada')[0].value;
+		var buttonTreinar = $('.js-treinar');
+		
+		if (isRnaTreinada == "true") {
+			
+			habilitaBotaoReconhecer();
+			mostrarRnaTreinada('RNA está treinada!','label-success');
+			
+			// Ajusta o texto do botão.
+			setTextRnaTreinada();
+		}
+
+	};
+	
+	function exibirLabelTreinamento(e) {
+		var str;
+		var label;
+
+		var rnaTreinada = $('#rnaTreinada');
+
+		var botaoTreinar = $('.js-treinar');
+		
+		if (e == "OK") {
+			str = "RNA treinada com sucesso!";
+			label = "label-success";
+
+			habilitaBotaoReconhecer();
+			// console.log(rnaTreinada);
+			rnaTreinada.attr('value', true);
+			
+			botaoTreinar.toggleClass('disabled');
+			setTextRnaTreinada();
+
+		} else {
+			str = "Erro ao treinar RNA!";
+			label = "label-danger";
+		}
+		
+		mostrarRnaTreinada(str, label);
+		
+	}
+
+	// Exibe o label de treinado com sucesso.
+	function mostrarRnaTreinada(texto, label){
+		$('#msgTreinar').html(
+				'<span class="label ' + label + '">' + texto + '</span>').show(
+				'slow').css('display', 'inline');
+	}
+	
+	// Seta o texto do botão quando treinada a RNA
+	function setTextRnaTreinada(){
+		var buttonTreinar = $('.js-treinar');
+		buttonTreinar.text('Treinar novamente');
+	}
+
 	
 });

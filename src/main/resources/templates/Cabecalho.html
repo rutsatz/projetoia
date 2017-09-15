@@ -3,11 +3,28 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<p class="navbar-text">
-			Projeto da disciplina de inteligência artificial
-		</p>
-		
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cabecalho-navbar-collapse" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<p class="navbar-brand">
+					Projeto da disciplina de inteligência artificial
+				</p>
+
+			</div>
+			<div class="collapse navbar-collapse" id="cabecalho-navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/}">Questionário<span class="sr-only">(current)</span></a></li>
+					<li><a th:href="@{/estatistica}">Estátistica</a></li>
+					<li><a th:href="@{/sobre}">Sobre</a></li>
+				</ul>
+			</div>	
+		</div>
 	</nav>
 	
 </html>

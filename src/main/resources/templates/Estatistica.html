@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+
+<head></head>
+
+<section layout:fragment="conteudo">
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<caption class="text-center">Estatísticas</caption>
+			<thead>
+				<tr>
+					<th class="text-center col-md-2">Primeira Linguagem</th>
+					<th class="text-center col-md-2">Segunda Linguagem</th>
+					<th class="text-center col-md-2">Resultado</th>
+					<th class="text-center col-md-2">Participantes</th>
+					<th class="text-center col-md-1">%</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="estatistica : ${estatisticas}">
+					<td class="text-center" th:text="${estatistica.primeiraLinguagem}">Java</td>
+					<td class="text-center" th:text="${estatistica.segundaLinguagem}">Java</td>
+					<td class="text-center" th:text="${estatistica.resultado}">Fácil</td>
+					<td class="text-center" th:text="${estatistica.quantidade}">1</td>
+					<td class="text-center" th:text="${estatistica.porcentagem}">5%</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td class="text-right" colspan="5" th:text="'Total de participantes: '+ ${total}">Total participantes: 5</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+</section>	
+</html>
