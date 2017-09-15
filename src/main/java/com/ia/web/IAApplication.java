@@ -40,40 +40,40 @@ public class IAApplication {
 		};
 	}
 	
-	@Bean
-	InitializingBean saveData(Respostas repo) {		
-		return () -> {
-			BackPropagation bPropagation = new BackPropagation();
-			
-			Resposta resposta = new Resposta(bPropagation, Dificuldade.FACIL);
-			repo.save(resposta);
-			
-			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
-			repo.save(resposta);
-			
-			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
-			repo.save(resposta);
-			
-			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
-			repo.save(resposta);
-			
-			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
-			repo.save(resposta);
-
-			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
-			repo.save(resposta);
-
-			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
-			repo.save(resposta);
-			
-			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
-			repo.save(resposta);
-			
-			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
-			repo.save(resposta);
-			
-		};
-		
-	}
+//	@Bean
+//	InitializingBean saveData(Respostas repo) {		
+//		return () -> {
+//			BackPropagation bPropagation = new BackPropagation();
+//			
+//			Resposta resposta = new Resposta(bPropagation, Dificuldade.FACIL);
+//			repo.save(resposta);
+//			
+//			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
+//			repo.save(resposta);
+//			
+//			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
+//			repo.save(resposta);
+//			
+//			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
+//			repo.save(resposta);
+//			
+//			resposta = new Resposta(bPropagation, Dificuldade.MODERADO);
+//			repo.save(resposta);
+//
+//			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
+//			repo.save(resposta);
+//
+//			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
+//			repo.save(resposta);
+//			
+//			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
+//			repo.save(resposta);
+//			
+//			resposta = new Resposta(bPropagation, Dificuldade.DIFICIL);
+//			repo.save(resposta);
+//			
+//		};
+//		
+//	}
 	
 }
