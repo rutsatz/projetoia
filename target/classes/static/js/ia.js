@@ -16,23 +16,17 @@ $(function() {
 		
 		botaoTreinar.toggleClass('disabled').text('Aguarde...');
 		
-//		var file = $('#arquivoTreinamento');
-//		console.log(file);
-		var data = $('#formulario').serialize();
-//		var form = new FormData($('#formulario')[0]);
+//		var data = $('#formulario').serialize();
+		var formData = new FormData(this);
 
-//		var data = new FormData(form);
-		
-//		data.append('arquivoTreinamento',file);
-		
-//		console.log(data);
-		
+	console.log("form data " + formData);
+	
 		var response = $.ajax({
 			enctype: 'multipart/form-data',
 			url : '/treinar',
 			type : 'POST',
-			data: data,
-//			data : formData,
+//			data: data,
+			data : formData,
 			cache: false,
 			contentType: false,
 			processData: false,

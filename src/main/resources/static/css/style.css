@@ -1,6 +1,6 @@
 /* Tela Grande */
 @media ( min-width : 768px) {
-	.panel-default {
+	.panel-primary {
 		margin-left: 10px;
 		margin-right: 10px;
 	}
@@ -8,17 +8,21 @@
 		margin-left: 10px;
 		margin-right: 10px;
 	}
+	.table-responsive {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
 }
 
 .navbar-brand {
-	padding-top: 12px;	
+	padding-top: 12px;
 }
 
 nav p {
 	margin-bottom: 0px;
 }
 
-.js-treinar{
+.js-treinar {
 	min-width: 145px;
 }
 
