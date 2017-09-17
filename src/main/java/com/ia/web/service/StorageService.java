@@ -7,23 +7,24 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Fornece uma interface para interagir com um sistema
- * de armazenamento para salvar o arquivo.
+ * Fornece uma interface para interagir com um sistema de armazenamento para
+ * salvar o arquivo.
+ * 
  * @author Rafael
  *
  */
 public interface StorageService {
 
 	void init();
-	
+
 	void store(MultipartFile file);
-	
+
 	Stream<Path> loadAll();
-	
+
 	Path load(String filename);
-	
-	Resource loadAsResouce(String filename);
-	
+
+	Resource loadAsResource(String filename);
+
 	void deleteAll();
-	
+
 }

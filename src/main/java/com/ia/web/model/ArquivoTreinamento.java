@@ -1,7 +1,6 @@
 package com.ia.web.model;
 
 import java.math.BigInteger;
-import java.nio.file.Files;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,8 +15,6 @@ public class ArquivoTreinamento {
 
 	private List<Opcoes> opcoes;
 	
-	
-
 	public ArquivoTreinamento(Parametro parametro, List<Opcoes> opcoes) {
 		super();
 		this.parametro = parametro;
@@ -65,7 +62,8 @@ public class ArquivoTreinamento {
 
 		public Opcoes(Linguagem primeiraLinguagem, Linguagem segundaLinguagem, TempoAno tempoAprendizadoAlgoritmos,
 				TempoAno tempoExperienciaProgramacao, TempoAno tempoSemProgramar, SimNao trabalhaComProgramacao,
-				SimNao usaOrientacaoObjetos, SimNao usaProgramacaoWeb, SimNao dificuldadeConcentracao, Dificuldade resultado) {
+				SimNao usaOrientacaoObjetos, SimNao usaProgramacaoWeb, SimNao dificuldadeConcentracao,
+				Dificuldade resultado) {
 			super();
 			this.primeiraLinguagem = primeiraLinguagem;
 			this.segundaLinguagem = segundaLinguagem;
@@ -158,6 +156,5 @@ public class ArquivoTreinamento {
 		public void setDificuldadeConcentracao(SimNao dificuldadeConcentracao) {
 			this.dificuldadeConcentracao = dificuldadeConcentracao;
 		}
-
 	}
 }

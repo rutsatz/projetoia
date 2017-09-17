@@ -8,235 +8,266 @@
 
 <section layout:fragment="conteudo">
 
-	<form class="form-horizontal" method="POST" enctype="multipart/form-data" id="formulario" 
-		th:action="@{/}" th:object="${backPropagation}">
-	
+	<form class="form-horizontal" method="POST"
+		enctype="multipart/form-data" id="formulario" th:action="@{/}"
+		th:object="${backPropagation}">
+
 		<div layout:include="MensagemGeral"></div>
 		<div layout:include="MensagemErro"></div>
-	
-		<input type="hidden"  id="rnaTreinada" th:field="*{rnaTreinada}"/>
-	
+
+		<input type="hidden" id="rnaTreinada" th:field="*{rnaTreinada}" />
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h5 class="panel-title aw-titulo-panel">Parâmetros</h5>
 				</div>
 			</div>
-		
+
 			<div class="panel-body">
 				<div class="form-group"
-				th:classappend="${#fields.hasErrors('parametro.qtdCamadasIntermediarias')} ? has-error">
-					<label for="descricao" class="col-sm-4 control-label">Camadas intermediárias</label>
-					<div class="col-sm-2">					
-						<input type="text" class="form-control" id="qtdCamadasIntermediarias" 
-							th:field="*{parametro.qtdCamadasIntermediarias}" autofocus="autofocus"/>
-					</div>					
-				</div>	
-				
+					th:classappend="${#fields.hasErrors('parametro.qtdCamadasIntermediarias')} ? has-error">
+					<label for="descricao" class="col-sm-4 control-label">Camadas
+						intermediárias</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control"
+							id="qtdCamadasIntermediarias"
+							th:field="*{parametro.qtdCamadasIntermediarias}"
+							autofocus="autofocus" />
+					</div>
+				</div>
+
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('parametro.neuroniosPorCamada')} ? has-error">
-					<label for="neuroniosPorCamada" class="col-sm-4 control-label">Neurônios Por Camada</label>
+					<label for="neuroniosPorCamada" class="col-sm-4 control-label">Neurônios
+						Por Camada</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="neuroniosPorCamada" 
-							th:field="*{parametro.neuroniosPorCamada}"/>
-							
-					</div>	
-				</div>	
-				
+						<input type="text" class="form-control" id="neuroniosPorCamada"
+							th:field="*{parametro.neuroniosPorCamada}" />
+
+					</div>
+				</div>
+
 				<div class="form-group js-decimal"
 					th:classappend="${#fields.hasErrors('parametro.taxaAprendizagem')} ? has-error">
-					<label for="taxaAprendizagem" class="col-sm-4 control-label">Taxa de Aprendizagem</label>
+					<label for="taxaAprendizagem" class="col-sm-4 control-label">Taxa
+						de Aprendizagem</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" id="taxaAprendizagem"
-							th:field="*{parametro.taxaAprendizagem}"/>
-					</div>			
+							th:field="*{parametro.taxaAprendizagem}" />
+					</div>
 				</div>
-				
+
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('parametro.erroAceitavel')} ? has-error">
-					<label for="erroAceitavel" class="col-sm-4 control-label">Erro Aceitável</label>
+					<label for="erroAceitavel" class="col-sm-4 control-label">Erro
+						Aceitável</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" id="erroAceitavel"
-							th:field="*{parametro.erroAceitavel}"/>
-					</div>				
+							th:field="*{parametro.erroAceitavel}" />
+					</div>
 				</div>
-				
+
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('parametro.qtdIteracoes')} ? has-error">
-					<label for="qtdIteracoes" class="col-sm-4 control-label">Quantidade de Iterações</label>
+					<label for="qtdIteracoes" class="col-sm-4 control-label">Quantidade
+						de Iterações</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" id="qtdIteracoes"
-							th:field="*{parametro.qtdIteracoes}"/>
+							th:field="*{parametro.qtdIteracoes}" />
 					</div>
-				</div>			
+				</div>
 			</div>
-			
-		</div>	
-			
+
+		</div>
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<div class="clearfix">
-					<h5 class="panel-title aw-titulo-panel">Treine sua RNA</h5>					
+					<h5 class="panel-title aw-titulo-panel">Treine sua RNA</h5>
+					
+					 <div style="float: right;"><span class="glyphicon glyphicon-file " aria-hidden="true"></span>
+					<a style="color: white;" class="btn btn-link aw-link-panel" th:href="@{/user/sample_files/{file}(file='sample_training_data.json')}">Baixar Arquivo de Exemplo
+					
+					</a>
+					</div>
 				</div>
 			</div>
-			<div class="panel-body">			
-				<div class="form-group control-label"> 
+			<div class="panel-body">
+				<div class="form-group control-label">
 					<div class="checkbox">
-    					<label class="col-sm-6">
-      						<input type="checkbox" th:field="*{parametro.usarArquivo}"/>
-      						 Testar RNA usando dados do arquivo
-    					</label>
-  					</div>				
-					<label for="arquivoTreinamento" class="col-sm-4 control-label"
-						>Envie um arquivo de treinamento</label>
-					<div class="col-sm-6 ">
-						<input type="file" id="arquivoTreinamento"
-						th:field="*{arquivoTreinamento}" />
-						<p class="help-block">Caso não envie nenhum arquivo,
-							serão usados dados estátisticos coletados em pesquisa.</p>
+						<label class="col-sm-6"> <input type="checkbox"
+							th:field="*{parametro.usarArquivo}" /> Testar RNA usando dados
+							do arquivo
+						</label>
+						
 					</div>
-					 
+					
+					
+					
+					<label for="arquivoTreinamento" class="col-sm-4 control-label">Envie
+						um arquivo de treinamento</label>
+					<div class="col-sm-6 ">
+						<input type="file" id="arquivoTreinamento" 
+							th:field="*{arquivoTreinamento}" accept=".json"/>
+						<p class="help-block">Caso não envie nenhum arquivo, serão
+							usados dados estátisticos coletados em pesquisa.</p>
+					</div>
+		
 				</div>
-				
+
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-10">
 						<button type="submit" class="btn btn-primary js-treinar"
-						th:href="@{/treinar}" >Treinar RNA</button>
+							th:href="@{/treinar}">Treinar RNA</button>
 						<h4 style="display: none" id="msgTreinar"></h4>
 					</div>
-										
+
 				</div>
 			</div>
-		</div>	
-				
+		</div>
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h5 class="panel-title aw-titulo-panel">Perguntas</h5>
+
+						
+
 				</div>
 			</div>
-			
-		
+
+
 			<div class="panel-body">
-			
+
 				<div class="form-group">
-					<label for="primeiraLinguagem" class="col-sm-4 control-label"
-						>Qual foi a primeira linguagem de programação que você aprendeu?</label>
+					<label for="primeiraLinguagem" class="col-sm-4 control-label">Qual
+						foi a primeira linguagem de programação que você aprendeu?</label>
 					<div class="col-sm-2">
-						<select class="form-control" id="primeiraLinguagem" name="primeiraLinguagem">
+						<select class="form-control" id="primeiraLinguagem"
+							name="primeiraLinguagem">
 							<option th:each="linguagem : ${todasLinguagens}"
 								th:value="${linguagem}" th:text="${linguagem.descricao}"
 								th:field="*{primeiraLinguagem}"></option>
 						</select>
 					</div>
 				</div>
-				
-						
+
+
 				<div class="form-group">
-					<label for="novaLinguagem" class="col-sm-4 control-label" 
-						>Qual linguagem você deseja aprender?</label>
+					<label for="novaLinguagem" class="col-sm-4 control-label">Qual
+						linguagem você deseja aprender?</label>
 					<div class="col-sm-2">
-						<select class="form-control" id="segundaLinguagem" name="segundaLinguagem">
+						<select class="form-control" id="segundaLinguagem"
+							name="segundaLinguagem">
 							<option th:each="linguagem : ${todasLinguagens}"
 								th:value="${linguagem}" th:text="${linguagem.descricao}"
 								th:field="*{segundaLinguagem}"></option>
 						</select>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
-					<label for="tempoAprendizadoAlgoritmos" class="col-sm-4 control-label"
-					>Quanto tempo (anos) faz que você aprendeu algoritmos?</label>
+					<label for="tempoAprendizadoAlgoritmos"
+						class="col-sm-4 control-label">Quanto tempo (anos) faz que
+						você aprendeu algoritmos?</label>
 					<div class="col-sm-2">
-					<select class="form-control" id="tempoAprendizadoAlgoritmos" name="tempoAprendizadoAlgoritmos">
-					<option th:each="tempo : ${todosTempoAno}"
-						th:value="${tempo}" th:text="${tempo.descricao}"
-						th:field="*{tempoAprendizadoAlgoritmos}"></option>
-					</select>
+						<select class="form-control" id="tempoAprendizadoAlgoritmos"
+							name="tempoAprendizadoAlgoritmos">
+							<option th:each="tempo : ${todosTempoAno}" th:value="${tempo}"
+								th:text="${tempo.descricao}"
+								th:field="*{tempoAprendizadoAlgoritmos}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="tempoExperienciaProgramacao" class="col-sm-4 control-label"
-					>Quanto tempo (anos) você tem de experiência em programação?</label>
+					<label for="tempoExperienciaProgramacao"
+						class="col-sm-4 control-label">Quanto tempo (anos) você
+						tem de experiência em programação?</label>
 					<div class="col-sm-2">
-					<select class="form-control" id="tempoExperienciaProgramacao" name="tempoExperienciaProgramacao">
-					<option th:each="tempo : ${todosTempoAno}"
-						th:value="${tempo}" th:text="${tempo.descricao}"
-						th:field="*{tempoExperienciaProgramacao}"></option>
-					</select>
+						<select class="form-control" id="tempoExperienciaProgramacao"
+							name="tempoExperienciaProgramacao">
+							<option th:each="tempo : ${todosTempoAno}" th:value="${tempo}"
+								th:text="${tempo.descricao}"
+								th:field="*{tempoExperienciaProgramacao}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="tempoSemProgramar" class="col-sm-4 control-label"
-					>Quanto tempo (anos) você não programa?</label>
+					<label for="tempoSemProgramar" class="col-sm-4 control-label">Quanto
+						tempo (anos) você não programa?</label>
 					<div class="col-sm-2">
-					<select class="form-control" id="tempoSemProgramar" name="tempoSemProgramar">
-					<option th:each="tempo : ${todosTempoAno}"
-						th:value="${tempo}" th:text="${tempo.descricao}"
-						th:field="*{tempoSemProgramar}"></option>
-					</select>
+						<select class="form-control" id="tempoSemProgramar"
+							name="tempoSemProgramar">
+							<option th:each="tempo : ${todosTempoAno}" th:value="${tempo}"
+								th:text="${tempo.descricao}" th:field="*{tempoSemProgramar}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="trabalhaComProgramacao" class="col-sm-4 control-label"
-					>Atualmente você trabalha com programação?</label>
+					<label for="trabalhaComProgramacao" class="col-sm-4 control-label">Atualmente
+						você trabalha com programação?</label>
 					<div class="col-sm-2">
-					<select class="form-control" id="trabalhaComProgramacao" name="trabalhaComProgramacao">
-					<option th:each="simnao : ${todosSimNao}"
-						th:value="${simnao}" th:text="${simnao.descricao}"
-						th:field="*{trabalhaComProgramacao}"></option>
-					</select>
+						<select class="form-control" id="trabalhaComProgramacao"
+							name="trabalhaComProgramacao">
+							<option th:each="simnao : ${todosSimNao}" th:value="${simnao}"
+								th:text="${simnao.descricao}"
+								th:field="*{trabalhaComProgramacao}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="usaOrientacaoObjetos" class="col-sm-4 control-label"
-					>Você utiliza programação orientada a objetos?</label>
+					<label for="usaOrientacaoObjetos" class="col-sm-4 control-label">Você
+						utiliza programação orientada a objetos?</label>
 					<div class="col-sm-2">
-					<select class="form-control" id="usaOrientacaoObjetos" name="usaOrientacaoObjetos">
-					<option th:each="simnao : ${todosSimNao}"
-						th:value="${simnao}" th:text="${simnao.descricao}"
-						th:field="*{usaOrientacaoObjetos}"></option>
-					</select>
+						<select class="form-control" id="usaOrientacaoObjetos"
+							name="usaOrientacaoObjetos">
+							<option th:each="simnao : ${todosSimNao}" th:value="${simnao}"
+								th:text="${simnao.descricao}" th:field="*{usaOrientacaoObjetos}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="usaProgramacaoWeb" class="col-sm-4 control-label"
-					>Você utiliza programação web?</label>
+					<label for="usaProgramacaoWeb" class="col-sm-4 control-label">Você
+						utiliza programação web?</label>
 					<div class="col-sm-2">
-					<select class="form-control" id="usaProgramacaoWeb" name="usaProgramacaoWeb">
-					<option th:each="simnao : ${todosSimNao}"
-						th:value="${simnao}" th:text="${simnao.descricao}"
-						th:field="*{usaProgramacaoWeb}"></option>
-					</select>
+						<select class="form-control" id="usaProgramacaoWeb"
+							name="usaProgramacaoWeb">
+							<option th:each="simnao : ${todosSimNao}" th:value="${simnao}"
+								th:text="${simnao.descricao}" th:field="*{usaProgramacaoWeb}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="dificuldadeConcentracao" class="col-sm-4 control-label"
-					>Você tem dificuldade de concentração?</label>
+					<label for="dificuldadeConcentracao" class="col-sm-4 control-label">Você
+						tem dificuldade de concentração?</label>
 					<div class="col-sm-2">
-					<select class="form-control" id="dificuldadeConcentracao" name="dificuldadeConcentracao">
-					<option th:each="simnao : ${todosSimNao}"
-						th:value="${simnao}" th:text="${simnao.descricao}"
-						th:field="*{dificuldadeConcentracao}"></option>
-					</select>
+						<select class="form-control" id="dificuldadeConcentracao"
+							name="dificuldadeConcentracao">
+							<option th:each="simnao : ${todosSimNao}" th:value="${simnao}"
+								th:text="${simnao.descricao}"
+								th:field="*{dificuldadeConcentracao}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-10">
-						<button type="submit" class="btn btn-primary disabled js-reconhecer">RNA não treinada</button>
-					</div>	
+						<button type="submit"
+							class="btn btn-primary disabled js-reconhecer">RNA não
+							treinada</button>
+					</div>
 				</div>
-			</div>	
-		
+			</div>
+
 		</div>
-		
+
 	</form>
-</section>	
+</section>
 </html>

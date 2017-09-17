@@ -1,10 +1,6 @@
 package com.ia.web.service;
 
-import java.util.Iterator;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.ia.web.model.BackPropagation;
@@ -12,7 +8,6 @@ import com.ia.web.model.Parametro;
 import com.ia.web.model.resposta.Dificuldade;
 
 import ADReNA_API.Data.DataSet;
-import ADReNA_API.Data.DataSetObject;
 import ADReNA_API.NeuralNetwork.Backpropagation;
 
 @Service
@@ -52,9 +47,6 @@ public class BackPropagationService {
 
 		Parametro param = backPropagation.getParametro();
 
-		int inputLayerSize = param.getInputLayerSize();
-		int outputLayerSize = param.getOuputLayerSize();
-
 		try {
 
 			// Carrega os dados para treinamento.
@@ -67,7 +59,6 @@ public class BackPropagationService {
 			throw new Exception("Erro ao treinar rede!");
 		}
 
-		// System.out.println(rede.GetMaxIterationNumber());
 	}
 
 	/**

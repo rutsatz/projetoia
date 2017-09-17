@@ -18,6 +18,4 @@ public class StorageProperties {
 		this.location = location;
 	}
 
-	
-	
 }

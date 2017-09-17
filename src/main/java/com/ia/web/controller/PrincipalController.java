@@ -1,32 +1,29 @@
 package com.ia.web.controller;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
+import java.io.FileInputStream;
+
+import java.io.IOException;
+
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
-import com.ia.web.model.ArquivoTreinamento;
 import com.ia.web.model.BackPropagation;
 import com.ia.web.model.Resposta;
 import com.ia.web.model.resposta.Dificuldade;
@@ -46,14 +43,14 @@ public class PrincipalController {
 
 	@Autowired
 	private RespostaService respostaService;
-		
+
 	private final StorageService storageService;
 
 	@Autowired
 	public PrincipalController(StorageService storageService) {
 		this.storageService = storageService;
 	}
-	
+
 	/**
 	 * Boas vindas!
 	 * 
@@ -76,13 +73,7 @@ public class PrincipalController {
 	 */
 	@RequestMapping(value = "/treinar", method = RequestMethod.POST)
 	public @ResponseBody String treinar(@Validated BackPropagation backPropagation) {
-		// , @RequestParam("file") MultipartFile arquivoTreinamento
-//		System.out.println(arquivoTreinamento);
-		System.out.println(backPropagation.getArquivoTreinamento());
-//		System.out.println("File: " + backPropagation.getArquivoTreinamento().getOriginalFilename());		
-//		storageService.store( backPropagation.getArquivoTreinamento() );
 
-		
 		try {
 			backPropagationService.setBackPropagation(backPropagation);
 			backPropagationService.treinar();
@@ -110,7 +101,6 @@ public class PrincipalController {
 		Resposta resposta;
 		String resultado = "";
 
-		
 		ModelAndView mv = new ModelAndView("Principal");
 
 		if (erros.hasErrors()) {
@@ -139,45 +129,34 @@ public class PrincipalController {
 		return mv;
 	}
 
-	@GetMapping("/teste")
-	private String teste(BackPropagation backPropagation) {
-		
-//		ArquivoTreinamento arq = new ArquivoTreinamento();
-		
-		Gson gson =  new Gson();
-//		System.out.println(gson.toJson(backPropagation));
-		
-//		System.out.println(gson.toJson(arq));
-		
-		String location = "user/sample_files"; 
-		String fileName = "sample_training_data.json";
-		String path = location + "/" + fileName;
+	@RequestMapping(value = "/user/sample_files/{filename:.+}", method = RequestMethod.GET)
+	public void getDownload(@PathVariable String filename, HttpServletResponse response) throws IOException {
+
 		try {
-		
-			ClassPathResource classPathResource = new ClassPathResource(path);
-				
-			System.out.println(classPathResource.getFile());
-			
-		ClassLoader classLoader = getClass().getClassLoader();
-		
-//		System.out.println(classLoader.getResource(path));
-		
-		File file = new File(classLoader.getResource(path).getFile());
-		
-		System.out.println(file);
-		}catch (Exception e) {
+			FileInputStream file = new FileInputStream("user/sample_files/" + filename);
+
+			// Set the content type and attachment header.
+			response.addHeader("Content-disposition", "attachment;filename=" + filename);
+			response.setContentType("application/json");
+
+			// Copy the stream to the response's output stream.
+			IOUtils.copy(file, response.getOutputStream());
+			response.flushBuffer();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//gson.fromJson(json, ArquivoTreinamento.class);
-		
-		return "Principal";
+
 	}
-	
+
 	@ExceptionHandler(StorageFileNotFoundException.class)
-	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc){
+	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@ModelAttribute("todasLinguagens")
 	public List<Linguagem> todasLinguagens() {
 		return Arrays.asList(Linguagem.values());
@@ -191,5 +170,9 @@ public class PrincipalController {
 	@ModelAttribute("todosSimNao")
 	public List<SimNao> todosSimNao() {
 		return Arrays.asList(SimNao.values());
+	}
+
+	public StorageService getStorageService() {
+		return storageService;
 	}
 }

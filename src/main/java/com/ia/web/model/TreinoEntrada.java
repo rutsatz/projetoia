@@ -51,8 +51,8 @@ public class TreinoEntrada {
 	 * Retorna os dados no formato definido para a RNA.
 	 * 
 	 * Obs: No Arraycopy, quando o tamanho a ser copiado diminui, tenho que
-	 * compensar na posição de inicio da cópia. Não sei porque, somente espero que
-	 * funcione.
+	 * compensar na posição de inicio da cópia. Não sei porque, somente espero
+	 * que funcione.
 	 * 
 	 * @return double[]
 	 */

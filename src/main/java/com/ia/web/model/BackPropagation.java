@@ -68,7 +68,8 @@ public class BackPropagation {
 	private boolean rnaTreinada;
 
 	/**
-	 * Construtor que inicializa com valores padrões para a página de boas vindas.
+	 * Construtor que inicializa com valores padrões para a página de boas
+	 * vindas.
 	 */
 	public BackPropagation() {
 
@@ -154,8 +155,14 @@ public class BackPropagation {
 		DataSet treino = null;
 
 		if (parametro.getUsarArquivo()) {
-			// Aqui tratar parse do arquivo.
 
+			Treino treinar = new Treino(getArquivoTreinamento(), parametro.getInputLayerSize(),
+					parametro.getOuputLayerSize());
+
+			setParametro(treinar.getParametro());
+
+			// Aqui tratar parse do arquivo
+			treino = treinar.getTreinoArquivo();
 		} else {
 			treino = Treino.getTreinoDefault(parametro.getInputLayerSize(), parametro.getOuputLayerSize());
 		}
@@ -164,8 +171,8 @@ public class BackPropagation {
 	}
 
 	/**
-	 * Pega as opções que o usuário selecionou e converte para o formato aceito pela
-	 * RNA.
+	 * Pega as opções que o usuário selecionou e converte para o formato aceito
+	 * pela RNA.
 	 * 
 	 * @return double[]
 	 */

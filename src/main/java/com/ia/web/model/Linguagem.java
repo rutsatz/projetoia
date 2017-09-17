@@ -30,6 +30,5 @@ public enum Linguagem {
 	public void setPeso(double[] peso) {
 		this.peso = peso;
 	}
-	
-	
+
 }

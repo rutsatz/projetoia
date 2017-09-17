@@ -18,11 +18,11 @@ public class RespostaService {
 	public void salvar(Resposta resposta) {
 		respostas.save(resposta);
 	}
-	
-	public List<Estatistica> estatisticas(){
+
+	public List<Estatistica> estatisticas() {
 		return respostas.getEstatisticas();
 	}
-	
+
 	public long total() {
 		return respostas.count();
 	}
