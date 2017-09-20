@@ -7,7 +7,7 @@ $(function() {
 	trataRnaTreinada();
 
 	var botaoTreinar = $('.js-treinar');
-
+	
 	// Realiza o treinamento da RNA via ajax.
 	botaoTreinar.on('click', function(event) {
 		event.preventDefault();
@@ -15,8 +15,6 @@ $(function() {
 		labelMsgTreinar = $('#msgTreinar');
 
 		labelMsgTreinar.hide();
-
-		botaoTreinar.toggleClass('disabled').text('Aguarde...');
 
 		// Enviar requisição
 		sendData();
@@ -33,9 +31,19 @@ $(function() {
 		var usarArquivo = $("input[type='checkbox']").is(':checked');
 
 		if (usarArquivo) {
+						
 			var file = $('#arquivoTreinamento')[0].files[0];
+			
+			// Verifica se selecionou algum arquivo.
+			if(file == undefined){
+				mostrarRnaTreinada('Selecione o arquivo de treinamento!', 'label-danger');
+				return;
+			}
+			
 			form.append('arquivoTreinamento', file);
 		}
+		
+		botaoTreinar.toggleClass('disabled').text('Aguarde...');
 
 		var response = $.ajax({
 			enctype : 'multipart/form-data',
@@ -45,7 +53,7 @@ $(function() {
 			cache : false,
 			contentType : false,
 			processData : false,
-			timeout : 600000
+			timeout : 36000 // 10 min.
 		});
 
 		// Exibe o retorno da função para o usuário.
@@ -66,7 +74,7 @@ $(function() {
 	function habilitaBotaoReconhecer() {
 		var botaoReconhecer = $('.js-reconhecer');
 
-		botaoReconhecer.toggleClass('disabled').text('Reconhecer');
+		botaoReconhecer.removeClass('disabled').text('Reconhecer');
 	}
 	;
 
