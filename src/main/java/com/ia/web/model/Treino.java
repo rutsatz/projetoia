@@ -354,6 +354,132 @@ public class Treino {
 			ts = new TreinoSaida(Dificuldade.FACIL);
 			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
 
+			// 48
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.PHP, TempoAno.UM_ANO_MENOS, TempoAno.CINCO_ANOS_MAIS,
+					TempoAno.UM_ANO_MENOS, SimNao.NAO, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.FACIL);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 49
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.JAVASCRIPT, TempoAno.UM_ANO_MENOS, TempoAno.DOIS_ANOS,
+					TempoAno.QUATRO_ANOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 50
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.PHP, TempoAno.DOIS_ANOS, TempoAno.TRES_ANOS,
+					TempoAno.UM_ANO_MENOS, SimNao.NAO, SimNao.SIM, SimNao.SIM, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 51
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.PHP, TempoAno.CINCO_ANOS_MAIS, TempoAno.CINCO_ANOS_MAIS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.FACIL);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 52
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.CPP, TempoAno.UM_ANO_MENOS, TempoAno.QUATRO_ANOS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 53
+			te = new TreinoEntrada(Linguagem.C, Linguagem.JAVA, TempoAno.UM_ANO_MENOS, TempoAno.QUATRO_ANOS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 54
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.CPP, TempoAno.UM_ANO_MENOS, TempoAno.QUATRO_ANOS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 55
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.JAVASCRIPT, TempoAno.UM_ANO_MENOS, TempoAno.TRES_ANOS,
+					TempoAno.DOIS_ANOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 56
+			te = new TreinoEntrada(Linguagem.C, Linguagem.JAVA, TempoAno.DOIS_ANOS, TempoAno.UM_ANO_MENOS,
+					TempoAno.UM_ANO_MENOS, SimNao.NAO, SimNao.SIM, SimNao.NAO, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.FACIL);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 57
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.PYTHON, TempoAno.UM_ANO_MENOS, TempoAno.UM_ANO_MENOS,
+					TempoAno.UM_ANO_MENOS, SimNao.NAO, SimNao.NAO, SimNao.NAO, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.FACIL);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 58
+			te = new TreinoEntrada(Linguagem.JAVASCRIPT, Linguagem.JAVA, TempoAno.TRES_ANOS, TempoAno.TRES_ANOS,
+					TempoAno.TRES_ANOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.FACIL);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 59
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.CPP, TempoAno.UM_ANO_MENOS, TempoAno.TRES_ANOS,
+					TempoAno.TRES_ANOS, SimNao.NAO, SimNao.SIM, SimNao.NAO, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 60
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.CSS, TempoAno.CINCO_ANOS_MAIS, TempoAno.CINCO_ANOS_MAIS,
+					TempoAno.UM_ANO_MENOS, SimNao.NAO, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.FACIL);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 61
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.CPP, TempoAno.QUATRO_ANOS, TempoAno.TRES_ANOS,
+					TempoAno.TRES_ANOS, SimNao.NAO, SimNao.SIM, SimNao.NAO, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.FACIL);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 62
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.PHP, TempoAno.UM_ANO_MENOS, TempoAno.DOIS_ANOS,
+					TempoAno.TRES_ANOS, SimNao.NAO, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 63
+			te = new TreinoEntrada(Linguagem.CPP, Linguagem.PHP, TempoAno.CINCO_ANOS_MAIS, TempoAno.CINCO_ANOS_MAIS,
+					TempoAno.TRES_ANOS, SimNao.NAO, SimNao.NAO, SimNao.SIM, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 64
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.JAVASCRIPT, TempoAno.QUATRO_ANOS, TempoAno.QUATRO_ANOS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 65
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.PHP, TempoAno.CINCO_ANOS_MAIS, TempoAno.CINCO_ANOS_MAIS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 66
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.SHELL, TempoAno.UM_ANO_MENOS, TempoAno.UM_ANO_MENOS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.NAO);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 67
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.JAVASCRIPT, TempoAno.TRES_ANOS, TempoAno.TRES_ANOS,
+					TempoAno.UM_ANO_MENOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
+			// 68
+			te = new TreinoEntrada(Linguagem.JAVA, Linguagem.PHP, TempoAno.UM_ANO_MENOS, TempoAno.UM_ANO_MENOS,
+					TempoAno.TRES_ANOS, SimNao.SIM, SimNao.SIM, SimNao.SIM, SimNao.SIM);
+			ts = new TreinoSaida(Dificuldade.MODERADO);
+			treino.Add(new DataSetObject(te.asArray(inputLayerSize), ts.asArray(outputLayerSize)));
+
 		} catch (Exception e) {
 			throw new Exception("Erro ao criar conjunto de treinamento!");
 		}
@@ -372,6 +498,5 @@ public class Treino {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
 }
