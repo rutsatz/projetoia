@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -75,6 +77,13 @@ public class PrincipalController {
 	public @ResponseBody String treinar(@Validated BackPropagation backPropagation) {
 
 		try {
+			System.out.println("Limite Iterações: " + backPropagation.getParametro().getQtdIteracoes());
+
+			// Salva o arquivo no HD.
+			if (backPropagation.getParametro().getUsarArquivo()) {
+				storageService.store(backPropagation.getArquivoTreinamento());
+			}
+
 			backPropagationService.setBackPropagation(backPropagation);
 			backPropagationService.treinar();
 		} catch (Exception e) {
@@ -100,6 +109,7 @@ public class PrincipalController {
 		Dificuldade dificuldade = null;
 		Resposta resposta;
 		String resultado = "";
+		String iteracoes = "";
 
 		ModelAndView mv = new ModelAndView("Principal");
 
@@ -117,9 +127,12 @@ public class PrincipalController {
 			throw new Exception("Padrão não foi reconhecido!");
 		}
 
+		iteracoes = "Para treinar a RNA foram necessárias " + backPropagationService.getRede().GetIterationNumber() + " iterações.";
+		
 		// Formata texto para exibir para o usuário.
 		resultado = dificuldade.getTextUser(dificuldade);
 
+		mv.addObject("msg_iteracoes", iteracoes);
 		mv.addObject("mensagem", resultado);
 
 		// Salva no banco de dados.

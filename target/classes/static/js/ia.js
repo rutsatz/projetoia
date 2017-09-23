@@ -23,10 +23,11 @@ $(function() {
 
 	function sendData() {
 
-		var form = new FormData();
+		var form = new FormData($('#formulario')[0]);
 
-		var data = $('#formulario').serialize();
-		form.append('backPropagation', data);
+//		var form = new FormData();
+//		var data = $('#formulario').serialize();
+//		form.append('backPropagation', data);
 
 		var usarArquivo = $("input[type='checkbox']").is(':checked');
 
@@ -55,6 +56,8 @@ $(function() {
 			processData : false,
 			timeout : 36000 // 10 min.
 		});
+
+	
 
 		// Exibe o retorno da função para o usuário.
 		response.done(exibirLabelTreinamento);

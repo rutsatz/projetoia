@@ -1,6 +1,7 @@
 package com.ia.web.model;
 
 import java.math.BigInteger;
+import java.util.Iterator;
 
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
@@ -17,6 +18,7 @@ import com.ia.web.model.resposta.SimNao;
 import com.ia.web.model.resposta.TempoAno;
 
 import ADReNA_API.Data.DataSet;
+import ADReNA_API.Data.DataSetObject;
 
 @Embeddable
 @Service
@@ -75,7 +77,7 @@ public class BackPropagation {
 
 		// Define parâmetros default quando nenhum parâmetro
 		// for definido.
-		this.parametro = new Parametro(1, // Qtd camadas intermediárias.
+		this.parametro = new Parametro(3, // Qtd camadas intermediárias.
 				"10,5,10", // Qtd neurônios por camada.
 				0.3, // Taxa de aprendizagem.
 				0.005, // Erro aceitável.
@@ -167,6 +169,8 @@ public class BackPropagation {
 			treino = Treino.getTreinoDefault(parametro.getInputLayerSize(), parametro.getOuputLayerSize());
 		}
 
+		System.out.println("Tamanho lista: " +treino.GetList().size());
+		
 		return treino;
 	}
 

@@ -359,4 +359,19 @@ public class Treino {
 		}
 		return treino;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Treino [inputLayerSize=");
+		builder.append(inputLayerSize);
+		builder.append(", outputLayerSize=");
+		builder.append(outputLayerSize);
+		builder.append(", arq=");
+		builder.append(arq);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }

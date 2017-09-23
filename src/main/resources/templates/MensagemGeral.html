@@ -8,17 +8,23 @@
 <!-- </div> -->
 
 <div id="resposta" style="display: block" th:if="${!#strings.isEmpty(mensagem)}">
-	<div class="panel panel-success" >
+	<div class="panel panel-primary" >
 		<div class="panel-heading">
 			<div class="clearfix">
 				<h5 class="panel-title aw-titulo-panel">Resultado</h5>
 			</div>
 		</div>
 		<div class="panel-body" >
-			<div class="form-group">
-				<label for="resposta" class="col-sm-6 control-label"
-					th:text="${mensagem}">Você vai ter:</label>
-			</div>
+			<div class="form-group" >
+				<div class="alert alert-info" role="alert">
+					<label for="msg_iteracoes" class="col-sm-offset-4 control-label"
+						th:text="${msg_iteracoes}">RNA treinada com x interações.</label>
+				</div>		
+				<div class="alert alert-success" role="alert">
+					<label for="resposta" class="col-sm-offset-4 control-label"
+						th:text="${mensagem}">Você vai ter:</label>
+				</div>
+			</div>	
 		</div>
 	</div>
 </div>		

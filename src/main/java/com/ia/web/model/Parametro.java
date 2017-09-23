@@ -129,6 +129,11 @@ public class Parametro {
 		return qtdIteracoes;
 	}
 
+	public int getQtdIteracoesIntValue() {
+		int qtd = qtdIteracoes.intValue();
+		return qtd;
+	}	
+	
 	public void setQtdIteracoes(BigInteger qtdIteracoes) {
 		this.qtdIteracoes = qtdIteracoes;
 	}

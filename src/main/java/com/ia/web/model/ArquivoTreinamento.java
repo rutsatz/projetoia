@@ -48,6 +48,8 @@ public class ArquivoTreinamento {
 		this.opcoes = opcoes;
 	}
 
+	
+	
 	public class Opcoes {
 		private Linguagem primeiraLinguagem;
 		private Linguagem segundaLinguagem;
@@ -156,5 +158,47 @@ public class ArquivoTreinamento {
 		public void setDificuldadeConcentracao(SimNao dificuldadeConcentracao) {
 			this.dificuldadeConcentracao = dificuldadeConcentracao;
 		}
+
+		@Override
+		public String toString() {
+			StringBuilder builder = new StringBuilder();
+			builder.append("Opcoes [primeiraLinguagem=");
+			builder.append(primeiraLinguagem);
+			builder.append(", segundaLinguagem=");
+			builder.append(segundaLinguagem);
+			builder.append(", tempoAprendizadoAlgoritmos=");
+			builder.append(tempoAprendizadoAlgoritmos);
+			builder.append(", tempoExperienciaProgramacao=");
+			builder.append(tempoExperienciaProgramacao);
+			builder.append(", tempoSemProgramar=");
+			builder.append(tempoSemProgramar);
+			builder.append(", trabalhaComProgramacao=");
+			builder.append(trabalhaComProgramacao);
+			builder.append(", usaOrientacaoObjetos=");
+			builder.append(usaOrientacaoObjetos);
+			builder.append(", usaProgramacaoWeb=");
+			builder.append(usaProgramacaoWeb);
+			builder.append(", dificuldadeConcentracao=");
+			builder.append(dificuldadeConcentracao);
+			builder.append(", resultado=");
+			builder.append(resultado);
+			builder.append("]");
+			return builder.toString();
+		}
+		
+		
+	}
+
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ArquivoTreinamento [parametro=");
+		builder.append(parametro);
+		builder.append(", opcoes=");
+		builder.append(opcoes);
+		builder.append("]");
+		return builder.toString();
 	}
 }

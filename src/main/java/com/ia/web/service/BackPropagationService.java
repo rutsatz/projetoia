@@ -71,6 +71,7 @@ public class BackPropagationService {
 
 		double[] saida;
 		try {
+			System.out.println(rede.GetIterationNumber());
 			saida = rede.Recognize(backPropagation.getDadosReconhecer());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -133,6 +134,8 @@ public class BackPropagationService {
 
 		// taxa de aprendizado (Opcional)
 		rede.SetLearningRate(param.getTaxaAprendizagem());
+		
+		rede.SetMaxIterationNumber(param.getQtdIteracoesIntValue());
 	}
 
 	public com.ia.web.model.BackPropagation getBackPropagation() {
@@ -143,4 +146,14 @@ public class BackPropagationService {
 		this.backPropagation = backPropagation;
 		configurarParametros();
 	}
+
+	public Backpropagation getRede() {
+		return rede;
+	}
+
+	public void setRede(Backpropagation rede) {
+		this.rede = rede;
+	}
+	
+	
 }
