@@ -13,7 +13,7 @@ import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 import com.ia.web.service.StorageService;
 import com.ia.web.storage.StorageProperties;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration.class)
 @EnableConfigurationProperties(StorageProperties.class)
 public class IAApplication {
 
