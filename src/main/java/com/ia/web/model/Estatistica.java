@@ -1,7 +1,7 @@
 package com.ia.web.model;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 import com.ia.web.model.resposta.Dificuldade;
 import com.ia.web.model.resposta.Linguagem;

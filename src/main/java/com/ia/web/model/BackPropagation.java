@@ -3,11 +3,11 @@ package com.ia.web.model;
 import java.math.BigInteger;
 import java.util.Iterator;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Transient;
-import javax.validation.Valid;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Transient;
+import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
