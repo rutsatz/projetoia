@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -59,10 +60,11 @@ public class PrincipalController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping("/")
-	public ModelAndView inicio() {
+	public ModelAndView inicio(HttpServletRequest httpServletRequest) {
 
 		ModelAndView mv = new ModelAndView("Principal");
 		mv.addObject(new BackPropagation());
+		mv.addObject("httpServletRequest", httpServletRequest);
 
 		return mv;
 	}
@@ -104,7 +106,7 @@ public class PrincipalController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView reconhecer(@Validated BackPropagation backPropagation, Errors erros,
-			RedirectAttributes attributes) throws Exception {
+			RedirectAttributes attributes, HttpServletRequest httpServletRequest) throws Exception {
 
 		Dificuldade dificuldade = null;
 		Resposta resposta;
@@ -138,6 +140,8 @@ public class PrincipalController {
 		// Salva no banco de dados.
 		resposta = new Resposta(backPropagation, dificuldade);
 		respostaService.salvar(resposta);
+
+		mv.addObject("httpServletRequest", httpServletRequest);
 
 		return mv;
 	}

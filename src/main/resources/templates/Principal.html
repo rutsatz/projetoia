@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="LayoutPadrao">
+	layout:decorate="LayoutPadrao">
 
 <head></head>
 
@@ -12,8 +12,8 @@
 		enctype="multipart/form-data" id="formulario" th:action="@{/}"
 		th:object="${backPropagation}">
 
-		<div layout:include="MensagemGeral"></div>
-		<div layout:include="MensagemErro"></div>
+		<div layout:insert="MensagemGeral"></div>
+		<div layout:insert="MensagemErro"></div>
 
 		<input type="hidden" id="rnaTreinada" th:field="*{rnaTreinada}" />
 

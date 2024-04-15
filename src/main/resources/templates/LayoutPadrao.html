@@ -13,13 +13,13 @@
 </head>
 <body>
 	
-	<header layout:include="Cabecalho"></header>
+	<header layout:insert="Cabecalho"></header>
 	
 	<section layout:fragment="conteudo">
 		<p>Conteúdo principal</p>
 	</section>
 	
-	<footer layout:include="Rodape"></footer>
+	<footer layout:insert="Rodape"></footer>
 	
 	<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>

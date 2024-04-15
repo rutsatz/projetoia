@@ -25,9 +25,9 @@
 			</div>
 			<div class="collapse navbar-collapse" id="cabecalho-navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"><a th:href="@{/}">Questionário<span class="sr-only">(current)</span></a></li>
-					<li th:classappend="${#httpServletRequest.getRequestURI() == '/estatistica' ? 'active':''}"><a th:href="@{/estatistica}">Estatística</a></li>
-					<li th:classappend="${#httpServletRequest.getRequestURI() == '/sobre' ? 'active':''}"><a th:href="@{/sobre}">Sobre</a></li>
+					<li th:classappend="${httpServletRequest.getRequestURI() == '/' ? 'active':''}"><a th:href="@{/}">Questionário<span class="sr-only">(current)</span></a></li>
+					<li th:classappend="${httpServletRequest.getRequestURI() == '/estatistica' ? 'active':''}"><a th:href="@{/estatistica}">Estatística</a></li>
+					<li th:classappend="${httpServletRequest.getRequestURI() == '/sobre' ? 'active':''}"><a th:href="@{/sobre}">Sobre</a></li>
 				</ul>
 			</div>	
 		</div>

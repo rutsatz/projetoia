@@ -2,6 +2,7 @@ package com.ia.web.controller;
 
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ public class EstatisticaController {
 	private RespostaService respostaService;
 
 	@RequestMapping("/estatistica")
-	public ModelAndView estatistica() {
+	public ModelAndView estatistica(HttpServletRequest httpServletRequest) {
 
 		ModelAndView mv = new ModelAndView("Estatistica");
 
@@ -32,6 +33,7 @@ public class EstatisticaController {
 		mv.addObject("estatisticas", estatisticas);
 		mv.addObject("total", totalRespostas);
 
+		mv.addObject("httpServletRequest", httpServletRequest);
 		return mv;
 	}
 
